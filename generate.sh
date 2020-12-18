@@ -1,5 +1,33 @@
 #!/bin/bash
-bindgen --opaque-type=FILE --distrust-clang-mangling  --no-layout-tests --rustified-enum='.*' \
+set -uex
+
+# Blacklist setting
+#
+# Types
+# ------
+# - "fftw.*_complex"
+#   - Use `num_complex::Complex32` and `num_complex::Complex64`
+# - "FILE"
+#   - Use `libc::FILE` instead
+# - "_.*"
+#   - Remove unrelated
+#
+# Function
+# ---------
+# - "fftwl_.*"
+#   - Disable `long double` interface
+#
+
+bindgen \
+  --opaque-type=FILE \
+  --distrust-clang-mangling \
+  --no-layout-tests \
+  --whitelist-type='^opj.*' \
+  --whitelist-var='^OPJ.*' \
+  --whitelist-function='^opj.*' \
+  --blacklist-type='_.*' \
+  --blacklist-function='_.*' \
+  --rustified-enum='.*' \
  vendor/src/lib/openjp2/openjpeg.h -- -Ivendor/src/src/lib/openjp2/ -Iconfig/ |
   sed -E 's/pub type FILE.*/use libc::FILE;/;
   s/\s*@param +([^ ]+)/* `\1` — /;
