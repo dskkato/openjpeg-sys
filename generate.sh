@@ -1,23 +1,6 @@
 #!/bin/bash
 set -uex
 
-# Blacklist setting
-#
-# Types
-# ------
-# - "fftw.*_complex"
-#   - Use `num_complex::Complex32` and `num_complex::Complex64`
-# - "FILE"
-#   - Use `libc::FILE` instead
-# - "_.*"
-#   - Remove unrelated
-#
-# Function
-# ---------
-# - "fftwl_.*"
-#   - Disable `long double` interface
-#
-
 bindgen \
   --opaque-type=FILE \
   --distrust-clang-mangling \
