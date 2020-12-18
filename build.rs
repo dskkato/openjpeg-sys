@@ -7,7 +7,6 @@ fn main() {
     cc.include(jp2dir);
     cc.include("config");
     cc.define("OPJ_STATIC", Some("1"));
-    cc.define("MUTEX_stub", Some("1")); // FIXME define MUTEX_win32 or MUTEX_pthread
 
     let files = [
         "thread.c",
