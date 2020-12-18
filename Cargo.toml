@@ -13,11 +13,7 @@ readme = "README.md"
 keywords = ["j2k", "jp2", "jpeg2000"]
 
 [dependencies]
-libc = "0.2.54"
+libc = "0.2"
 
 [build-dependencies]
-cc = "1.0.37"
 cmake = "0.1"
-
-[features]
-parallel = ["cc/parallel"]
