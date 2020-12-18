@@ -218,11 +218,7 @@ extern "C" {
     pub fn getwchar() -> wint_t;
 }
 extern "C" {
-    pub fn fgetws(
-        _Buffer: *mut wchar_t,
-        _BufferCount: c_int,
-        _Stream: *mut FILE,
-    ) -> *mut wchar_t;
+    pub fn fgetws(_Buffer: *mut wchar_t, _BufferCount: c_int, _Stream: *mut FILE) -> *mut wchar_t;
 }
 extern "C" {
     pub fn fputws(_Buffer: *const wchar_t, _Stream: *mut FILE) -> c_int;
@@ -271,11 +267,7 @@ extern "C" {
     ) -> errno_t;
 }
 extern "C" {
-    pub fn _wfsopen(
-        _FileName: *const wchar_t,
-        _Mode: *const wchar_t,
-        _ShFlag: c_int,
-    ) -> *mut FILE;
+    pub fn _wfsopen(_FileName: *const wchar_t, _Mode: *const wchar_t, _ShFlag: c_int) -> *mut FILE;
 }
 extern "C" {
     pub fn _wperror(_ErrorMessage: *const wchar_t);
@@ -434,10 +426,7 @@ extern "C" {
     ) -> errno_t;
 }
 extern "C" {
-    pub fn gets_s(
-        _Buffer: *mut c_char,
-        _Size: rsize_t,
-    ) -> *mut c_char;
+    pub fn gets_s(_Buffer: *mut c_char, _Size: rsize_t) -> *mut c_char;
 }
 extern "C" {
     pub fn tmpfile_s(_Stream: *mut *mut FILE) -> errno_t;
@@ -455,10 +444,7 @@ extern "C" {
     pub fn _fcloseall() -> c_int;
 }
 extern "C" {
-    pub fn _fdopen(
-        _FileHandle: c_int,
-        _Mode: *const c_char,
-    ) -> *mut FILE;
+    pub fn _fdopen(_FileHandle: c_int, _Mode: *const c_char) -> *mut FILE;
 }
 extern "C" {
     pub fn feof(_Stream: *mut FILE) -> c_int;
@@ -479,11 +465,7 @@ extern "C" {
     pub fn fgetpos(_Stream: *mut FILE, _Position: *mut fpos_t) -> c_int;
 }
 extern "C" {
-    pub fn fgets(
-        _Buffer: *mut c_char,
-        _MaxCount: c_int,
-        _Stream: *mut FILE,
-    ) -> *mut c_char;
+    pub fn fgets(_Buffer: *mut c_char, _MaxCount: c_int, _Stream: *mut FILE) -> *mut c_char;
 }
 extern "C" {
     pub fn _fileno(_Stream: *mut FILE) -> c_int;
@@ -492,10 +474,7 @@ extern "C" {
     pub fn _flushall() -> c_int;
 }
 extern "C" {
-    pub fn fopen(
-        _FileName: *const c_char,
-        _Mode: *const c_char,
-    ) -> *mut FILE;
+    pub fn fopen(_FileName: *const c_char, _Mode: *const c_char) -> *mut FILE;
 }
 extern "C" {
     pub fn fputc(_Character: c_int, _Stream: *mut FILE) -> c_int;
@@ -504,10 +483,7 @@ extern "C" {
     pub fn _fputchar(_Character: c_int) -> c_int;
 }
 extern "C" {
-    pub fn fputs(
-        _Buffer: *const c_char,
-        _Stream: *mut FILE,
-    ) -> c_int;
+    pub fn fputs(_Buffer: *const c_char, _Stream: *mut FILE) -> c_int;
 }
 extern "C" {
     pub fn fread(
@@ -518,35 +494,20 @@ extern "C" {
     ) -> c_ulonglong;
 }
 extern "C" {
-    pub fn freopen(
-        _FileName: *const c_char,
-        _Mode: *const c_char,
-        _Stream: *mut FILE,
-    ) -> *mut FILE;
+    pub fn freopen(_FileName: *const c_char, _Mode: *const c_char, _Stream: *mut FILE)
+        -> *mut FILE;
 }
 extern "C" {
-    pub fn _fsopen(
-        _FileName: *const c_char,
-        _Mode: *const c_char,
-        _ShFlag: c_int,
-    ) -> *mut FILE;
+    pub fn _fsopen(_FileName: *const c_char, _Mode: *const c_char, _ShFlag: c_int) -> *mut FILE;
 }
 extern "C" {
     pub fn fsetpos(_Stream: *mut FILE, _Position: *const fpos_t) -> c_int;
 }
 extern "C" {
-    pub fn fseek(
-        _Stream: *mut FILE,
-        _Offset: c_long,
-        _Origin: c_int,
-    ) -> c_int;
+    pub fn fseek(_Stream: *mut FILE, _Offset: c_long, _Origin: c_int) -> c_int;
 }
 extern "C" {
-    pub fn _fseeki64(
-        _Stream: *mut FILE,
-        _Offset: c_longlong,
-        _Origin: c_int,
-    ) -> c_int;
+    pub fn _fseeki64(_Stream: *mut FILE, _Offset: c_longlong, _Origin: c_int) -> c_int;
 }
 extern "C" {
     pub fn ftell(_Stream: *mut FILE) -> c_long;
@@ -581,10 +542,7 @@ extern "C" {
     pub fn _pclose(_Stream: *mut FILE) -> c_int;
 }
 extern "C" {
-    pub fn _popen(
-        _Command: *const c_char,
-        _Mode: *const c_char,
-    ) -> *mut FILE;
+    pub fn _popen(_Command: *const c_char, _Mode: *const c_char) -> *mut FILE;
 }
 extern "C" {
     pub fn putc(_Character: c_int, _Stream: *mut FILE) -> c_int;
@@ -602,10 +560,7 @@ extern "C" {
     pub fn remove(_FileName: *const c_char) -> c_int;
 }
 extern "C" {
-    pub fn rename(
-        _OldFileName: *const c_char,
-        _NewFileName: *const c_char,
-    ) -> c_int;
+    pub fn rename(_OldFileName: *const c_char, _NewFileName: *const c_char) -> c_int;
 }
 extern "C" {
     pub fn _unlink(_FileName: *const c_char) -> c_int;
@@ -626,18 +581,10 @@ extern "C" {
     pub fn _setmaxstdio(_Maximum: c_int) -> c_int;
 }
 extern "C" {
-    pub fn setvbuf(
-        _Stream: *mut FILE,
-        _Buffer: *mut c_char,
-        _Mode: c_int,
-        _Size: size_t,
-    ) -> c_int;
+    pub fn setvbuf(_Stream: *mut FILE, _Buffer: *mut c_char, _Mode: c_int, _Size: size_t) -> c_int;
 }
 extern "C" {
-    pub fn _tempnam(
-        _DirectoryName: *const c_char,
-        _FilePrefix: *const c_char,
-    ) -> *mut c_char;
+    pub fn _tempnam(_DirectoryName: *const c_char, _FilePrefix: *const c_char) -> *mut c_char;
 }
 extern "C" {
     pub fn tmpfile() -> *mut FILE;
@@ -664,10 +611,7 @@ extern "C" {
     pub fn _fgetc_nolock(_Stream: *mut FILE) -> c_int;
 }
 extern "C" {
-    pub fn _fputc_nolock(
-        _Character: c_int,
-        _Stream: *mut FILE,
-    ) -> c_int;
+    pub fn _fputc_nolock(_Character: c_int, _Stream: *mut FILE) -> c_int;
 }
 extern "C" {
     pub fn _fread_nolock(
@@ -687,18 +631,10 @@ extern "C" {
     ) -> size_t;
 }
 extern "C" {
-    pub fn _fseek_nolock(
-        _Stream: *mut FILE,
-        _Offset: c_long,
-        _Origin: c_int,
-    ) -> c_int;
+    pub fn _fseek_nolock(_Stream: *mut FILE, _Offset: c_long, _Origin: c_int) -> c_int;
 }
 extern "C" {
-    pub fn _fseeki64_nolock(
-        _Stream: *mut FILE,
-        _Offset: c_longlong,
-        _Origin: c_int,
-    ) -> c_int;
+    pub fn _fseeki64_nolock(_Stream: *mut FILE, _Offset: c_longlong, _Origin: c_int) -> c_int;
 }
 extern "C" {
     pub fn _ftell_nolock(_Stream: *mut FILE) -> c_long;
@@ -718,16 +654,10 @@ extern "C" {
     pub fn _getc_nolock(_Stream: *mut FILE) -> c_int;
 }
 extern "C" {
-    pub fn _putc_nolock(
-        _Character: c_int,
-        _Stream: *mut FILE,
-    ) -> c_int;
+    pub fn _putc_nolock(_Character: c_int, _Stream: *mut FILE) -> c_int;
 }
 extern "C" {
-    pub fn _ungetc_nolock(
-        _Character: c_int,
-        _Stream: *mut FILE,
-    ) -> c_int;
+    pub fn _ungetc_nolock(_Character: c_int, _Stream: *mut FILE) -> c_int;
 }
 extern "C" {
     pub fn __p__commode() -> *mut c_int;
@@ -826,19 +756,13 @@ extern "C" {
     ) -> c_int;
 }
 extern "C" {
-    pub fn tempnam(
-        _Directory: *const c_char,
-        _FilePrefix: *const c_char,
-    ) -> *mut c_char;
+    pub fn tempnam(_Directory: *const c_char, _FilePrefix: *const c_char) -> *mut c_char;
 }
 extern "C" {
     pub fn fcloseall() -> c_int;
 }
 extern "C" {
-    pub fn fdopen(
-        _FileHandle: c_int,
-        _Format: *const c_char,
-    ) -> *mut FILE;
+    pub fn fdopen(_FileHandle: c_int, _Format: *const c_char) -> *mut FILE;
 }
 extern "C" {
     pub fn fgetchar() -> c_int;
@@ -956,12 +880,8 @@ pub use self::CODEC_FORMAT as OPJ_CODEC_FORMAT;
 #[doc = " Callback function prototype for events"]
 #[doc = "* `msg` —                Event message"]
 #[doc = "* `client_data` —        Client object where will be return the event message"]
-pub type opj_msg_callback = ::std::option::Option<
-    unsafe extern "C" fn(
-        msg: *const c_char,
-        client_data: *mut c_void,
-    ),
->;
+pub type opj_msg_callback =
+    ::std::option::Option<unsafe extern "C" fn(msg: *const c_char, client_data: *mut c_void)>;
 #[doc = " Progression order changes"]
 #[doc = ""]
 #[repr(C)]
@@ -1244,16 +1164,10 @@ pub type opj_stream_write_fn = ::std::option::Option<
     ) -> OPJ_SIZE_T,
 >;
 pub type opj_stream_skip_fn = ::std::option::Option<
-    unsafe extern "C" fn(
-        p_nb_bytes: OPJ_OFF_T,
-        p_user_data: *mut c_void,
-    ) -> OPJ_OFF_T,
+    unsafe extern "C" fn(p_nb_bytes: OPJ_OFF_T, p_user_data: *mut c_void) -> OPJ_OFF_T,
 >;
 pub type opj_stream_seek_fn = ::std::option::Option<
-    unsafe extern "C" fn(
-        p_nb_bytes: OPJ_OFF_T,
-        p_user_data: *mut c_void,
-    ) -> OPJ_BOOL,
+    unsafe extern "C" fn(p_nb_bytes: OPJ_OFF_T, p_user_data: *mut c_void) -> OPJ_BOOL,
 >;
 pub type opj_stream_free_user_data_fn =
     ::std::option::Option<unsafe extern "C" fn(p_user_data: *mut c_void)>;
@@ -1878,10 +1792,7 @@ extern "C" {
     #[doc = "* `num_threads` —    number of threads."]
     #[doc = ""]
     #[doc = "\n`OPJ_TRUE` —      if the decoder is correctly set"]
-    pub fn opj_codec_set_threads(
-        p_codec: *mut opj_codec_t,
-        num_threads: c_int,
-    ) -> OPJ_BOOL;
+    pub fn opj_codec_set_threads(p_codec: *mut opj_codec_t, num_threads: c_int) -> OPJ_BOOL;
 }
 extern "C" {
     #[doc = " Decodes an image header."]

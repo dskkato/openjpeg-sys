@@ -1,38 +1,13 @@
-use std::path::Path;
-
 fn main() {
-    let mut cc = cc::Build::new();
-    let jp2dir = Path::new("vendor/src/lib/openjp2");
+    let dst = cmake::Config::new("vendor")
+        .define("BUILD_SHARED_LIBS", "off")
+        .build();
 
-    cc.include(jp2dir);
-    cc.include("config");
-    cc.define("OPJ_STATIC", Some("1"));
-
-    let files = [
-        "thread.c",
-        "bio.c",
-        "cio.c",
-        "dwt.c",
-        "event.c",
-        "image.c",
-        "invert.c",
-        "j2k.c",
-        "jp2.c",
-        "mct.c",
-        "mqc.c",
-        "openjpeg.c",
-        "opj_clock.c",
-        "pi.c",
-        "t1.c",
-        "t2.c",
-        "tcd.c",
-        "tgt.c",
-        "function_list.c",
-        "opj_malloc.c",
-        "sparse_array.c",
-    ];
-    for file in files.iter() {
-        cc.file(jp2dir.join(file));
+    println!("cargo:rerun-if-changed=build.rs");
+    println!("cargo:rustc-link-search={}/lib", dst.display());
+    if cfg!(target_os = "windows") {
+        println!("cargo:rustc-link-lib=openjp2");
+    } else {
+        println!("cargo:rustc-link-lib=static=openjp2");
     }
-    cc.compile("openjp2");
 }
